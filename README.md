@@ -106,6 +106,6 @@ Quy trình dự đoán rating và gợi ý cũng tương tự như phương phá
 
 ## 4. Tài liệu tham khảo  
 
-[1] [Collaborative-Filtering: Machine Learning Cơ bản] (https://machinelearningcoban.com/2017/05/24/collaborativefiltering/)
+[1] [Collaborative-Filtering: Machine Learning Cơ bản](https://machinelearningcoban.com/2017/05/24/collaborativefiltering/)
 
 [2] [Lecture 43 — Collaborative Filtering | Stanford University](https://www.youtube.com/watch?v=h9gpufJFF-0&t=436s)
