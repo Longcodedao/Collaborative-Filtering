@@ -19,7 +19,7 @@ Có 2 cách tiếp cận cho bài toán Lọc Cộng tác này:
 
 ### 2.1 Similarity functions
 
-Việc xác định được độ giống nhau của những *users* là bước quan trọng nhất trong phương pháp User-User Collaborative Filtering. Dữ liệu hiện tại đang có là 1 ma trận *Utility* $Y$, ma trận thể hiện đánh giá (rating) của từng user cho tưng items khác nhau. 
+Việc xác định được độ giống nhau của những *users* là bước quan trọng nhất trong phương pháp User-User Collaborative Filtering. Dữ liệu hiện tại đang có là 1 ma trận *Utility* $\mathbf{Y}$, ma trận thể hiện đánh giá (rating) của từng user cho tưng items khác nhau. 
 
 <!-- ![Hình 1: Ma trận Utility $Y$](https://github.com/Longcodedao/Collaborative-Filtering/blob/main/images/utility.png?raw=true) -->
 
@@ -75,7 +75,7 @@ Ta có thể xác định rating của *user* $u_0$ cho *item* $i_2$ dựa vào 
 
 4. Rating của *user* $u_0$ cho *item* $i_2$ là:
 
-$$\hat{y}_{i_2, u_0} = \frac{1.25 \times 0.83 - 0.5 \times 0.2 }{ \left|0.83\right| + \left|0.2\right|} \approx 0.91$$
+$$\large \hat{y}_{i_2, u_0} = \frac{1.25 \times 0.83 - 0.5 \times 0.2 }{ \left|0.83\right| + \left|0.2\right|} \approx 0.91$$
 
 Hình 2d) thể hiện việc điền các giá trị *ratings* sau khi được chuẩn hóa. Ô tô màu đỏ thể hiện giá trị dương, tức là các *items* mà *users* quan tâm. Từ đó, ta có thể  gợi ý khách hàng những món items này. 
 
