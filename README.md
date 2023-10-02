@@ -9,7 +9,9 @@ Một trong những trọng tâm quan trọng nhất trong Collaborative Filteri
 - Làm sao xác định được sự tương đồng giữa 2 *users* khác nhau?
 - Làm sao có thể dự đoán mức độ quan tâm của một *user* trên một *item* dựa vào những suy nghĩ, đánh giá của những users khác giống họ.
 
-Có 2 cách tiếp cận cho bài toán Lọc Cộng tác này. Cách thứ nhất là xác định mức độ quan tâm của một user dựa trên những user khác giống nhau, hay còn gọi là Lọc Cộng tác dựa trên Người dùng (User-User Collaborative Filtering). Còn có một cách tiếp cận khác là xác định những items gần giống với những items có sự ưa chuộng cao (Item-Item Collaborative Filtering)
+Có 2 cách tiếp cận cho bài toán Lọc Cộng tác này: 
+- Cách thứ nhất là xác định mức độ quan tâm của một user dựa trên những user khác giống nhau, hay còn gọi là Lọc Cộng tác dựa trên Người dùng (User-User Collaborative Filtering).
+- Còn có một cách tiếp cận khác là xác định những items gần giống với những items có sự ưa chuộng cao (Item-Item Collaborative Filtering)
 
 
 
