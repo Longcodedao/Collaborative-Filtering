@@ -57,9 +57,9 @@ Xác định mức độ quan tâm của một *user* lên một *item* thườn
 ![](https://github.com/Longcodedao/Collaborative-Filtering/blob/main/images/CodeCogsEqn.gif?raw=true) 
 </center> -->
 
-\[
-\hat{y}_{i, u} = \frac{\sum_{u_j \in N(u, i)} \overline{y}_{i, u_j} \cdot \text{sim}(u, u_j)}{\sum_{u_j \in N(u, i)} \left|\text{sim}(u, u_j)\right|}
-\]
+<p align="center">
+  <img src="https://github.com/Longcodedao/Collaborative-Filtering/blob/main/images/CodeCogsEqn.gif?raw=true" alt=""/>
+</p>
 
 Trong đó $N(u, i)$ là tập hợp các $k$ *users* có *similarity* cao nhất của $u$ mà đã rate *item* $i$.
 
