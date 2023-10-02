@@ -3,11 +3,11 @@
 
 ## 1. Giới thiệu
 
-Lọc Cộng tác (Collaborative Filtering) là một phương pháp trong lĩnh vực hệ thống đề xuất (Recommender Systems) trong khoa học máy tính và thống kê. Phương pháp được sử dụng với mục đích đề xuất các mục (hay còn gọi là items) hoặc nội dung trên thông tin và mức độ quan tâm tương đồng của từng *users*. *Mức độ tương đồng* được xác địch bằng các đánh giá của từng *users* đối với các items trong toàn bộ hệ thống. Ví dụ, *anh A* và *chị B* đều yêu thích máy tính Iphone 15 Pro Max và đánh giá 5 sao trên FPT Shop. Ta cũng đã biết *anh A* cũng thích máy tính Macbook M2 Pro, vậy có khả năng cao là *chị B* cũng thích sản phẩm này.
+Lọc Cộng tác (Collaborative Filtering) là một phương pháp trong lĩnh vực hệ thống đề xuất (Recommender Systems) trong khoa học máy tính và thống kê. Phương pháp này được sử dụng với mục đích đề xuất các mục (hay còn gọi là items) hoặc nội dung dựa trên thông tin và mức độ quan tâm tương đồng của từng *users*. *Mức độ tương đồng* được xác định bằng các đánh giá của từng *users* đối với các *items* trong toàn bộ hệ thống. Ví dụ, *anh A* và *chị B* đều thích chiếc điện thoại Iphone 15 Pro Max và đánh giá 5 sao trên FPT Shop. Ta cũng đã biết *anh A* cũng thích máy tính Macbook M2 Pro. Liệu *chị B* cũng thích sản phẩm này?
 
-Một trong những câu hỏi quan trọng nhất trong Collaborative Filtering là:
-    - Làm sao xác định được sự tương đồng giữa 2 *users* khác nhau?
-    - Khi đã xác định được các *users* giống nhau, làm sao có thể dự đoán mức độ quan tâm của một user trên một item.
+Một trong những trọng tâm quan trọng nhất trong Collaborative Filtering là:
+- Làm sao xác định được sự tương đồng giữa 2 *users* khác nhau?
+- Làm sao có thể dự đoán mức độ quan tâm của một *user* trên một *item* dựa vào những suy nghĩ, đánh giá của những users khác giống họ.
 
 Có 2 cách tiếp cận cho bài toán Lọc Cộng tác này. Cách thứ nhất là xác định mức độ quan tâm của một user dựa trên những user khác giống nhau, hay còn gọi là Lọc Cộng tác dựa trên Người dùng (User-User Collaborative Filtering). Còn có một cách tiếp cận khác là xác định những items gần giống với những items có sự ưa chuộng cao (Item-Item Collaborative Filtering)
 
