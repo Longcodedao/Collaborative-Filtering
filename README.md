@@ -32,11 +32,11 @@ Trong trường hợp này, $u_0$ và $u_1$ đều thích items $i_0$ và $i_1$,
 
 **Chuẩn hóa dữ liệu**
 
-Giá trị mỗi rating tương ứng với nếu trừ đi với các giá trị trung bình của *ratings* cho từng user thì ta sẽ được ma trận *utility* được chuẩn hóa (hay còn gọi là $\hat{Y}$) như ở hình 2b). Có một số lý do như sau:
+Hàng cuối cùng trong Hình 2a) là giá trị trung bình của các *ratings* cho mỗi *user*. Giá trị mỗi rating tương ứng với nếu trừ đi với các giá trị trung bình của *ratings* cho từng user thì ta sẽ được ma trận *utility* được chuẩn hóa (hay còn gọi là $\hat{Y}$) như ở hình 2b). Có một số lý do như sau:
 
 - Trừ đi trung bình cộng của *user* khiến các giá trị cho từng user có thể nhận giá trị dương và âm. Giá trị dương tương ứng với việc *user* đánh giá tích cực về *item* và giá trị âm tương ứng với việc *user* đánh giá tiêu cực về *item* đó. Giá trị 0 tương ứng với việc *user* có góc nhìn *"trung lập"* về *item* đó.
 
-- Ngoài ra, số chiều của ma trận *utility* là rất lớn với hàng triêụ *users* và *items*. Vì vậy, sẽ là một điều bất khả thi nếu lưu toàn bộ ma trận đó (không đủ bộ nhớ). Số lượng *ratings* thường sẽ rất nhỏ so với kích thước của ma trận *utility* nên ta hay lưu dưới dạng *ma trận thưa*, tức là chỉ lưu các giá trị khác 0 và vị trí của chúng. Vì vậy ta sẽ điền các giá trị ? bằng số 0.
+- Ngoài ra, số chiều của ma trận *utility* là rất lớn với hàng triêụ *users* và *items*. Vì vậy, sẽ là một điều bất khả thi nếu lưu toàn bộ ma trận đó (vì không đủ bộ nhớ). Số lượng *ratings* thường sẽ rất nhỏ so với kích thước của ma trận *utility* nên ta hay lưu dưới dạng *ma trận thưa*, tức là chỉ lưu các giá trị khác 0 và vị trí của chúng. Vì vậy ta sẽ điền các giá trị ? bằng số 0.
 
 **Tương quan Cosine**
 
@@ -53,15 +53,39 @@ Từ công thức này, ta có thể dựng một ma trận tương quan *simila
 
 Xác định mức độ quan tâm của một *user* lên một *item* thường dựa trên các *users* gần nhất (*neighbor users*), rất giống với bài toán KNN. Trong Lọc Cộng tác, *missing rate* cũng xác định dựa trên $k$ *neighbor users* và ta chỉ quan tâm đến các *users* đã đánh giá *item* đang xem xét. Giá trị dự đoán rating được xác định bởi trung bình có trọng số của các đánh giá (*ratings*) đã được chuẩn hóa. 
 
-<!-- <center>
-![](https://github.com/Longcodedao/Collaborative-Filtering/blob/main/images/CodeCogsEqn.gif?raw=true) 
-</center> -->
-
 <p align="center">
   <img src="https://github.com/Longcodedao/Collaborative-Filtering/blob/main/images/CodeCogsEqn.gif?raw=true" alt=""/>
 </p>
 
-Trong đó $N(u, i)$ là tập hợp các $k$ *users* có *similarity* cao nhất của $u$ mà đã rate *item* $i$.
+Trong đó $N(u, i)$ là tập hợp các $k$ *users* có *similarity* cao nhất của $u$ mà đã rate *item* $i$, $\overline{y}_{i, u_j}$ là *normalized rating* của user $u_j$ trên item $i$.
+
+Ta có thể xác định rating của *user* $u_0$ cho *item* $i_2$ dựa vào $k = 2$ như sau:
+
+1. Xác định user đã rate cho $i_2$ là *users* $u_1$, $u_2$, $u_5$, $u_6$.
+
+2. Dựa trên ma trận tương quan nằm ở hình 2c). Ta xác định được *user* $u_1$ và *user* $u_5$ có *similarity* gần với $u_0$ nhất lần lượt là $0.83$ và $0.2$ (với $k = 2$ )
+ 
+3. Xác định *normalized ratings* của $u_1$ và $u_5$ lần lượt là $1.25$ và $-0.5$
+
+4. Rating của *user* $u_0$ cho *item* $i_2$ là:
+
+$$\hat{y}_{i_2, u_0} = \frac{1.25 \times 0.83 - 0.5 \times 0.2 }{ \left|0.83\right| + \left|0.2\right|} \approx 0.91$$
+
+Hình 2d) thể hiện việc điền các giá trị *ratings* sau khi được chuẩn hóa. Ô tô màu đỏ thể hiện giá trị dương, tức là các *items* mà *users* quan tâm. Từ đó, ta có thể  gợi ý khách hàng những món items này. 
+
+Ta có thể quy đổi tất cả giá trị về thang 5 bằng cách cộng tất cả các cột *user* của ma trận $\mathbf{\hat{Y}}$ với các giá trị trung bình của mỗi *user* như ở Hình 2a)
 
 
+## 3. Lọc Cộng Tác dựa trên Items (Item - Item Collaborative Filtering)
 
+Một số hạn chế của Lọc Cộng Tác dựa trên người dùng (User - User Collaborative Filtering):
+- Số lượng *users* luôn lớn hơn số lượng *items* rất nhiều. Vì vậy, ma trận tương quan (*similarity matrix*) của phần tử *users* có kích thước lớn hơn rất nhiều so với ma trận tương quan của *items*.
+
+- Ma trận *Utility* $\mathbf{Y}$ thường rất thưa do *users* thường rất lười rating. Chính vì việc này nên khi user thay đổi rating hoặc thêm rate thì trung bình các rating sẽ bị biến đổi khá lớn.
+
+Vì vậy, ta thường tiếp cận bằng cách Lọc Cộng tác dựa trên Items với những lợi ích sau:
+- Ma trận tương quan của items có kích thước bé hơn nhiều => thuận lợi cho việc lưu trữ và tính toán sau này.
+
+- Mỗi *item* có thể được nhiều rating bởi nhiều *users* khác nhau nên số hàng (*items*) sẽ có nhiều phần tử nhiều hơn số cột (*users*). Kéo theo giá trị trung bình của mỗi *item* trên hàng ít bị biến động khi có thêm rating. Vì vậy khi cập nhập vào ma trận tương quan thì ít bị biến động hơn.
+
+Quy trình dự đoán rating và gợi ý cũng tương tự như phương pháp User-User Collaborative Filtering **(Chỉ khác là chuyển vị ma trận *utility* và coi *items* là đang *rate users*. Sau đó, ta lại chuyển vị thêm một lần nữa để ra kết quả cuối cùng)**
