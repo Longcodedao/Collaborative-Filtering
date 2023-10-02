@@ -94,4 +94,8 @@ Vì vậy, ta thường tiếp cận bằng cách Lọc Cộng tác dựa trên 
 
 Quy trình dự đoán rating và gợi ý cũng tương tự như phương pháp User-User Collaborative Filtering **(Chỉ khác là chuyển vị ma trận *utility* và coi *items* là đang *rate users*. Sau đó, ta lại chuyển vị thêm một lần nữa để ra kết quả cuối cùng)**
 
-![Hình 3: Ví dụ mô tả Item-Item Collaborative Filtering. a) Utility Matrix ban đầu. b) Utility Matrix đã được chuẩn hoá. c) User similarity matrix. d) Dự đoán các (normalized) ratings còn thiếu](https://github.com/Longcodedao/Collaborative-Filtering/blob/main/images/item_cf.png)
+<!-- ![Hình 3: Ví dụ mô tả Item-Item Collaborative Filtering. a) Utility Matrix ban đầu. b) Utility Matrix đã được chuẩn hoá. c) User similarity matrix. d) Dự đoán các (normalized) ratings còn thiếu](https://github.com/Longcodedao/Collaborative-Filtering/blob/main/images/item_cf.png) -->
+
+<p align="center">
+    <img src="https://github.com/Longcodedao/Collaborative-Filtering/blob/main/images/item_cf.png" alt="Hình 3: Ví dụ mô tả Item-Item Collaborative Filtering. a) Utility Matrix ban đầu. b) Utility Matrix đã được chuẩn hoá. c) User similarity matrix. d) Dự đoán các (normalized) ratings còn thiếu" width = "500">
+</p>
