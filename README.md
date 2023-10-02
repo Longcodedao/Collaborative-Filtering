@@ -53,7 +53,7 @@ Từ công thức này, ta có thể dựng một ma trận tương quan *simila
 
 Xác định mức độ quan tâm của một *user* lên một *item* thường dựa trên các *users* gần nhất (*neighbor users*), rất giống với bài toán KNN. Trong Lọc Cộng tác, *missing rate* cũng xác định dựa trên $k$ *neighbor users* và ta chỉ quan tâm đến các *users* đã đánh giá *item* đang xem xét. Giá trị dự đoán rating được xác định bởi trung bình có trọng số của các đánh giá (*ratings*) đã được chuẩn hóa. 
 
-$$\hat{y}_{i, u} = \frac{\sum_{u_j \in N(u, i)}^{} \overline{y}_{i, u_j} sim(u, u_j)} {\sum_{u_j \in N(u, i)}^{} \left|sim(u, u_j)\right|}$$
+$$\hat{y}_{i, u} = \frac{\sum_{u_j \in N(u, i)} \overline{y}_{i, u_j} \cdot \text{sim}(u, u_j)}{\sum_{u_j \in N(u, i)} \left|\text{sim}(u, u_j)\right|}$$
 
 Trong đó $N(u, i)$ là tập hợp các $k$ *users* có *similarity* cao nhất của $u$ mà đã rate *item* $i$.
 
