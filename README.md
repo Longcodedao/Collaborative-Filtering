@@ -89,3 +89,5 @@ Vì vậy, ta thường tiếp cận bằng cách Lọc Cộng tác dựa trên 
 - Mỗi *item* có thể được nhiều rating bởi nhiều *users* khác nhau nên số hàng (*items*) sẽ có nhiều phần tử nhiều hơn số cột (*users*). Kéo theo giá trị trung bình của mỗi *item* trên hàng ít bị biến động khi có thêm rating. Vì vậy khi cập nhập vào ma trận tương quan thì ít bị biến động hơn.
 
 Quy trình dự đoán rating và gợi ý cũng tương tự như phương pháp User-User Collaborative Filtering **(Chỉ khác là chuyển vị ma trận *utility* và coi *items* là đang *rate users*. Sau đó, ta lại chuyển vị thêm một lần nữa để ra kết quả cuối cùng)**
+
+![Hình 3: Ví dụ mô tả Item-Item Collaborative Filtering. a) Utility Matrix ban đầu. b) Utility Matrix đã được chuẩn hoá. c) User similarity matrix. d) Dự đoán các (normalized) ratings còn thiếu](https://github.com/Longcodedao/Collaborative-Filtering/blob/main/images/item_cf.png)
