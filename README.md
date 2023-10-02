@@ -97,5 +97,5 @@ Quy trình dự đoán rating và gợi ý cũng tương tự như phương phá
 <!-- ![Hình 3: Ví dụ mô tả Item-Item Collaborative Filtering. a) Utility Matrix ban đầu. b) Utility Matrix đã được chuẩn hoá. c) User similarity matrix. d) Dự đoán các (normalized) ratings còn thiếu](https://github.com/Longcodedao/Collaborative-Filtering/blob/main/images/item_cf.png) -->
 
 <p align="center">
-    <img src="https://github.com/Longcodedao/Collaborative-Filtering/blob/main/images/item_cf.png" alt="Hình 3: Ví dụ mô tả Item-Item Collaborative Filtering. a) Utility Matrix ban đầu. b) Utility Matrix đã được chuẩn hoá. c) User similarity matrix. d) Dự đoán các (normalized) ratings còn thiếu" width = "500">
+    <img src="https://github.com/Longcodedao/Collaborative-Filtering/blob/main/images/item_cf.png" alt="Hình 3: Ví dụ mô tả Item-Item Collaborative Filtering. a) Utility Matrix ban đầu. b) Utility Matrix đã được chuẩn hoá. c) User similarity matrix. d) Dự đoán các (normalized) ratings còn thiếu" width = "700">
 </p>
