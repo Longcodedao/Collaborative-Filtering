@@ -23,7 +23,7 @@ Việc xác định được độ giống nhau của những *users* là bướ
 
 Các con số trong ma trận này là thang đo đánh giá từ 1 đến 5 sao, còn các dấu hỏi là những mục mà chưa có đánh giá (có thể là do người dùng chưa biết những sản phẩm này). Đó chính là những giá trị mà hệ thống phải đi tìm để gợi ý. Dựa vào mắt thường, ta có thể nhận biết các đánh giá user $u_0$ gần giống với user $u_1$ hơn các user còn lại. Vậy còn công thức toán học thì sao? Ta có công thức thể hiện mức động giống nhau của hai *users* $u_i$ và $u_j$ được kí hiệu là $sim(u_i, u_j)$. 
 
-Trong trường hợp này, $u_0$ và $u_1$ đều thích items $i_0$ và $i_1$, trái ngược với các user còn lại nên ta có $$\Large sim(u_0, u_1) > sim(u_0, u_i),  \forall i > 1$$
+Trong trường hợp này, $u_0$ và $u_1$ đều thích items $i_0$ và $i_1$, trái ngược với các user còn lại nên ta có $$\large sim(u_0, u_1) > sim(u_0, u_i),  \forall i > 1$$
 
 Để đo *similarity* giữa hai users, ta thường xây dựng một vector đặt trưng (feature vector) cho từng user (vector gồm từng rating cho mỗi items khác nhau). Ví dụ, vector đặt trưng cho *user* $u_2$ là $[2, ?, 1, 3, 4]$ cho từng items $i_0$, $i_1$, ..., $i_4$. Tuy nhiên, thực tế thì ma trận *Utility* này rất lớn (hệ thống thương mai điện tử  lớn thường có hàng triệu sản phẩm) nhưng mà số lượng rating thì rất ít (mỗi *user* thường rate rất ít). Vì vậy nên dễ dẫn đến vấn đề ma trận thưa (sparsity matrix) khiến cho việc gợi ý trở nên sai lệch và tăng bộ nhớ và khối lượng tính toán. Cách khắc phục là phân rã ma trận (Matrix Factorization) hoặc giảm chiều dữ liệu PCA (Dimensionality Reduction.)
 
@@ -38,12 +38,22 @@ Giá trị mỗi rating tương ứng với nếu trừ đi với các giá tr�
 
 - Ngoài ra, số chiều của ma trận *utility* là rất lớn với hàng triêụ *users* và *items*. Vì vậy, sẽ là một điều bất khả thi nếu lưu toàn bộ ma trận đó (không đủ bộ nhớ). Số lượng *ratings* thường sẽ rất nhỏ so với kích thước của ma trận *utility* nên ta hay lưu dưới dạng *ma trận thưa*, tức là chỉ lưu các giá trị khác 0 và vị trí của chúng. Vì vậy ta sẽ điền các giá trị ? bằng số 0.
 
-**Cosine Similarity**
+**Tương quan Cosine**
 
-*Cosine similarity* hay còn được gọi là *tương tự cosine* là một dạng phép đo thể hiện sự tương đồng giữa hai vector trong không gian đa chiều. Trong trường hợp này, ta sử dụng công thức này để thể hiện sự tương quan của các vector *user*. $$\Large Cosine\hspace{5pt}Similarity(\mathbf{u_1}, \mathbf{u_2}) = cos(\mathbf{u_1}, \mathbf{u_2}) = \frac{\mathbf{u_1}^{T}\mathbf{u_2}}{\|\mathbf{u_1}\|\|\mathbf{u_2}\|}$$
+*Cosine similarity* hay còn được gọi là *tương tự cosine* là một dạng phép đo thể hiện sự tương đồng giữa hai vector trong không gian đa chiều. Trong trường hợp này, ta sử dụng công thức này để thể hiện sự tương quan của các vector *user*. $$\large Cosine\hspace{5pt}Similarity(\mathbf{u_1}, \mathbf{u_2}) = cos(\mathbf{u_1}, \mathbf{u_2}) = \frac{\mathbf{u_1}^{T}\mathbf{u_2}}{\|\mathbf{u_1}\|\|\mathbf{u_2}\|}$$
 
 Trong đó $\mathbf{u_1}$ và $\mathbf{u_2}$ là vector tương ứng với *user 1* và *user 2* **đã được chuẩn hóa** như trên.
 
 Nếu giải thích dưới góc độ Toán học thì *cosine similarity* đo giá trị góc giữa 2 vector (đã học năm lớp 10). Độ *similarity* của hai vector này là đều nằm trong khoảng $[-1, 1]$ vì $-1 \leq cos(x) \leq 1$. Giá trị bằng 1 có nghĩa là 2 vector này cùng hướng, *similar* với nhau. Giá trị bằng -1 có nghĩa là 2 vector ngược hướng, hoàn toàn trái ngược nhau. Tức là hành vi trái ngược nhau
+
+Từ công thức này, ta có thể dựng một ma trận tương quan *similarity matrix* $\mathbf{S}$ như trên hình 2c)  
+
+
+### 2.2 Dự đoán Rating
+
+Xác định mức độ quan tâm của một *user* lên một *item* thường dựa trên các *users* gần nhất (*neighbor users*), rất giống với bài toán KNN. Trong Lọc Cộng tác, *missing rate* cũng xác định dựa trên $k$ *neighbor users* và ta chỉ quan tâm đến các *users* đã đánh giá *item* đang xem xét. Giá trị dự đoán rating được xác định bởi trung bình có trọng số của các đánh giá (*ratings*) đã được chuẩn hóa. $$\large \hat{y}_{i, u} = \frac{\sum_{u_j \in N(u, i)} \overline{y}_{i, u_j}sim(u, u_j)}{\sum_{u_j \in N(u, i)} \left|sim(u, u_j) \right|}$$
+
+Trong đó $N(u, i)$ là tập hợp các $k$ *users* có *similarity* cao nhất của $u$ mà đã rate *item* $i$.
+
 
 
