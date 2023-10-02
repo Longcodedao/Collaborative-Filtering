@@ -19,7 +19,9 @@ Có 2 cách tiếp cận cho bài toán Lọc Cộng tác này. Cách thứ nh�
 
 Việc xác định được độ giống nhau của những *users* là bước quan trọng nhất trong phương pháp User-User Collaborative Filtering. Dữ liệu hiện tại đang có là 1 ma trận *Utility* $Y$, ma trận thể hiện đánh giá (rating) của từng user cho tưng items khác nhau. 
 
-![Hình 1: Ma trận Utility $Y$](https://github.com/Longcodedao/Collaborative-Filtering/blob/main/images/utility.png?raw=true)
+<!-- ![Hình 1: Ma trận Utility $Y$](https://github.com/Longcodedao/Collaborative-Filtering/blob/main/images/utility.png?raw=true) -->
+
+<img src="https://github.com/Longcodedao/Collaborative-Filtering/blob/main/images/utility.png?raw=true" alt="Hình 1: Ma trận Utility $Y$" width="400"/>
 
 Các con số trong ma trận này là thang đo đánh giá từ 1 đến 5 sao, còn các dấu hỏi là những mục mà chưa có đánh giá (có thể là do người dùng chưa biết những sản phẩm này). Đó chính là những giá trị mà hệ thống phải đi tìm để gợi ý. Dựa vào mắt thường, ta có thể nhận biết các đánh giá user $u_0$ gần giống với user $u_1$ hơn các user còn lại. Vậy còn công thức toán học thì sao? Ta có công thức thể hiện mức động giống nhau của hai *users* $u_i$ và $u_j$ được kí hiệu là $sim(u_i, u_j)$. 
 
