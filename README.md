@@ -19,7 +19,7 @@ Có 2 cách tiếp cận cho bài toán Lọc Cộng tác này. Cách thứ nh�
 
 Việc xác định được độ giống nhau của những *users* là bước quan trọng nhất trong phương pháp User-User Collaborative Filtering. Dữ liệu hiện tại đang có là 1 ma trận *Utility* $Y$, ma trận thể hiện đánh giá (rating) của từng user cho tưng items khác nhau. 
 
-![Hình 1: Ma trận Utility $Y$](.images/utility.png)
+![Hình 1: Ma trận Utility $Y$](https://github.com/Longcodedao/Collaborative-Filtering/blob/main/images/utility.png?raw=true)
 
 Các con số trong ma trận này là thang đo đánh giá từ 1 đến 5 sao, còn các dấu hỏi là những mục mà chưa có đánh giá (có thể là do người dùng chưa biết những sản phẩm này). Đó chính là những giá trị mà hệ thống phải đi tìm để gợi ý. Dựa vào mắt thường, ta có thể nhận biết các đánh giá user $u_0$ gần giống với user $u_1$ hơn các user còn lại. Vậy còn công thức toán học thì sao? Ta có công thức thể hiện mức động giống nhau của hai *users* $u_i$ và $u_j$ được kí hiệu là $sim(u_i, u_j)$. 
 
@@ -29,7 +29,7 @@ $$ sim(u_0, u_1) > sim(u_0, u_i) \forall i > 1 $$.
 
 Để đo *similarity* giữa hai users, ta thường xây dựng một vector đặt trưng (feature vector) cho từng user (vector gồm từng rating cho mỗi items khác nhau). Ví dụ, vector đặt trưng cho *user* $u_2$ là $[2, ?, 1, 3, 4]$ cho từng items $i_0$, $i_1$, ..., $i_4$. Tuy nhiên, thực tế thì ma trận *Utility* này rất lớn (hệ thống thương mai điện tử  lớn thường có hàng nghìn sản phẩm) nhưng mà số lượng rating thì rất ít (mỗi *user* thường rate rất ít). Vì vậy nên dễ dẫn đến vấn đề ma trận thưa (sparsity matrix) khiến cho việc gợi ý trở nên sai lệch và tăng bộ nhớ và khối lượng tính toán. Cách khắc phục là phân rã ma trận (Matrix Factorization) hoặc giảm chiều dữ liệu PCA (Dimensionality Reduction.)
 
-![Hình 2: Ví dụ mô tả User-user Collaborative Filtering. a) Utility Matrix ban đầu. b) Utility Matrix đã được chuẩn hoá. c) User similarity matrix. d) Dự đoán các (normalized) ratings còn thiếu. e) Ví dụ về cách dự đoán normalized rating của $u_1$ cho $i_1$ f) Dự đoán các (denormalized) ratings còn thiếu.](./images/user_cf.png)
+![Hình 2: Ví dụ mô tả User-user Collaborative Filtering. a) Utility Matrix ban đầu. b) Utility Matrix đã được chuẩn hoá. c) User similarity matrix. d) Dự đoán các (normalized) ratings còn thiếu. e) Ví dụ về cách dự đoán normalized rating của $u_1$ cho $i_1$ f) Dự đoán các (denormalized) ratings còn thiếu.](https://github.com/Longcodedao/Collaborative-Filtering/blob/main/images/user_cf.png?raw=true)
 
 **Chuẩn hóa dữ liệu**
 
