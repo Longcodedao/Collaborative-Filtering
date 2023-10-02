@@ -101,3 +101,11 @@ Quy trình dự đoán rating và gợi ý cũng tương tự như phương phá
 <p align="center">
     <img src="https://github.com/Longcodedao/Collaborative-Filtering/blob/main/images/item_cf.png" alt="Hình 3: Ví dụ mô tả Item-Item Collaborative Filtering. a) Utility Matrix ban đầu. b) Utility Matrix đã được chuẩn hoá. c) User similarity matrix. d) Dự đoán các (normalized) ratings còn thiếu" width = "700">
 </p>
+
+
+
+## 4. Tài liệu tham khảo  
+
+[1] [Collaborative-Filtering: Machine Learning Cơ bản] (https://machinelearningcoban.com/2017/05/24/collaborativefiltering/)
+
+[2] [Lecture 43 — Collaborative Filtering | Stanford University](https://www.youtube.com/watch?v=h9gpufJFF-0&t=436s)
